@@ -41,6 +41,7 @@ job_msg_contrib.setall(
 job_activity.setall("* * * * *")
 job_check_timestamp.setall("* * * * *")
 
+print("activity Test")
 job_activity.run()
 
 
