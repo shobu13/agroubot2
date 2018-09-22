@@ -1,2 +1,5 @@
+from agroubot import client
+
+
 def test():
-    print("bruh")
+    yield from client.send_message("493132013914554369", "test")

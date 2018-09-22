@@ -33,11 +33,14 @@ cron_agroubot = CronTab()
 job_msg_promo = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
 job_msg_contrib = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
 job_activity = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
+job_check_timestamp = cron_agroubot.new()
 
 job_msg_promo.setall(PROMO_MINUTE + " " + PROMO_HEURE + " * * *")
 job_msg_contrib.setall(
     CONTRIBUTION_MINUTE + " " + CONTRIBUTION_HEURE + " " + CONTRIBUTION_JOUR + " * *")
 job_activity.setall("* * * * *")
+job_check_timestamp.setall("* * * * *")
+
 job_activity.run()
 
 
