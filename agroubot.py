@@ -30,13 +30,15 @@ CONTRIBUTION_JOUR = '*/3'
 
 cron_agroubot = CronTab()
 
-job_msg_promo = cron_agroubot.new(command='/usr/bin/echo')
-job_msg_contrib = cron_agroubot.new(command='/usr/bin/echo')
-job_activity = cron_agroubot.new(command='/usr/bin/echo')
+job_msg_promo = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
+job_msg_contrib = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
+job_activity = cron_agroubot.new(command="python3 -c 'import cron; cron.test()'")
 
 job_msg_promo.setall(PROMO_MINUTE + " " + PROMO_HEURE + " * * *")
-job_msg_contrib.setall(CONTRIBUTION_MINUTE + " " + CONTRIBUTION_HEURE + " " + CONTRIBUTION_JOUR + " * *")
-job_activity.setall("*/30 * * * * *")
+job_msg_contrib.setall(
+    CONTRIBUTION_MINUTE + " " + CONTRIBUTION_HEURE + " " + CONTRIBUTION_JOUR + " * *")
+job_activity.setall("* * * * *")
+job_activity.run()
 
 
 @client.event
